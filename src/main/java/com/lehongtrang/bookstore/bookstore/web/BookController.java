@@ -3,6 +3,7 @@ package com.lehongtrang.bookstore.bookstore.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,11 @@ public class BookController {
 	private BookRepository repository;
 	@Autowired
 	private CategoryRepository crepository;
+	
+	  @RequestMapping(value="/login")
+	    public String login() {	
+	        return "login";
+	    }	
 	//Listing all books
 	@RequestMapping(value="/booklist", method = RequestMethod.GET)
 	public String showAllBooks(Model model){
@@ -34,6 +40,7 @@ public class BookController {
 		return "/addbook";
 	}
 	//Save new book
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value="/save", method = RequestMethod.POST)
 	public String saveBook(Book book){
 		repository.save(book);
