@@ -52,6 +52,12 @@ public class BookRepositoryTest {
 		assertThat(book1.getId()).isNotNull();
 	}
 	@Test
+	public void deleteBook(){
+		List<Book> book2 = brepository.findByYear(1960);
+		assertThat(book2.get(0).equals(1));
+		brepository.delete(book2.get(0));
+	}
+	@Test
 	public void createCategory() {
 		Category category1 = new Category("Adventure");
 		crepository.save(category1);
