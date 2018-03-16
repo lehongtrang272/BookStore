@@ -7,5 +7,6 @@ import org.springframework.data.repository.query.Param;
 
 public interface BookRepository extends CrudRepository<Book, Long> {
 	List<Book> findByTitle(@Param("title") String title);
+	List<Book> findByYear(@Param("year") int year);
 
 }

@@ -26,6 +26,7 @@ public class BookController {
 	    public String login() {	
 	        return "login";
 	    }	
+	 
 	//Listing all books
 	@RequestMapping(value="/booklist", method = RequestMethod.GET)
 	public String showAllBooks(Model model){
